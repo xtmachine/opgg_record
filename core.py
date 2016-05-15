@@ -1,8 +1,13 @@
-#!/user/bin/env python
+#!/usr/bin/env python
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Start virtual display
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 # Load op.gg profile and click record button
 driver = webdriver.Firefox()
@@ -18,3 +23,6 @@ try:
     print("Clicked record!")
 finally:
     driver.quit()
+
+# Stop virtual display
+display.stop()
